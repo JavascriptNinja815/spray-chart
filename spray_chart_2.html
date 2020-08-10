@@ -3,69 +3,55 @@
 <style>
   body {
     background-image: url('assets/background_notebook.png');
-    font-family: Arial, Helvetica, sans-serif;
-    color: #d0dad2;
-    background-repeat: no-repeat;
+    font-family: Arial, Helvetica, cursive;
+    color: #5c5c52;
     background-size: 100%;
     margin: 0px;
   }
 
   ol {
-    font-size: 25px;
-    padding-left: 25px;
-    color: #d0dad2;
+    font-size: 17px;
+    font-weight: 700;
+    color: #5c5c52;
+    margin-left: 30px;
   }
 
   ol li {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     cursor: pointer;
   }
 
-  form {
-    margin-bottom: 20px;
+  ol li span {
+    float: right;
+    margin-right: 8px;
   }
 
   button {
     cursor: pointer;
   }
 
-  input[type="text"] {
-    width: 320px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-style: groove;
-    color: #d0dad2;
-    font-size: 22px;
-    font-weight: bold;
-    height: 50px;
-    margin-bottom: 20px;
-    padding: 0px 0px 0px 10px;
-  }
-
-  input[type="text"]:focus {
-    outline: none;
+  label {
+    font-size: 20px;
+    font-weight: 700;
+    color: #5c5c52;
   }
 
   .header {
     display: flex;
-    justify-content: space-around;
-    height: 80px;
+    justify-content: space-between;
+    background-image: url('assets/boxscore_light_portrait.png');
+    background-size: 100% 100%;
+    height: 60px;
   }
 
-  .header input {
-    background-image: url('assets/visitor_name_dark.png');
-  }
-
-  .header input.inset {
-    width: 60px;
-    background-size: 70px 50px;
-    text-align: center;
+  .header label.inset {
+    margin-left: 100px;
   }
 
   .header p {
     font-family: cursive;
     font-style: italic;
-    color: #a7934c;
+    color: #8e7229;
     text-transform: uppercase;
     font-weight: 900;
     font-size: 20px;
@@ -73,15 +59,13 @@
     display: inline-block;
   }
 
-  .inning .dropdown,
   .inning .out {
-    width: 70px;
-    background-size: 80px 50px;
+    margin-left: 20px;
   }
 
-  .light-bulbs {
+  /* .light-bulbs {
     margin-top: 10px;
-  }
+  } */
 
   .light-bulbs .bulbs {
     display: flex;
@@ -124,35 +108,29 @@
     width: 23%;
   }
 
-  .left-bar input {
-    background-image: url('assets/inset.png');
-    text-align: center;
-    width: 100%;
-    background-size: 100%;
-    height: 45px;
-    font-size: 20px;
+  .left-bar .team-name {
+    margin-left: 25%;
+    font-size: 18px;
   }
 
-  .left-bar form.team-members {
-    background-image: url('assets/background.jpg');
-    height: 70%;
-    width: 102%;
-    border-style: groove;
-    border-color: grey;
+  .left-bar .current-player p {
+    color: #8e7229;
+    font-weight: 700;
+    font-size: 18px;
+    transform: scaleX(0.8);
+    margin: 10px;
   }
 
-  form.team-members ol li span {
-    float: right;
-    margin-right: 8px;
+  .current-player {
+    background-image: url(assets/boxscore_light_portrait.png);
+    width: 94%;
+    height: 70px;
+    margin-left: 25px;
   }
 
-  form.players {
-    background-image: url('assets/background.jpg');
-    width: 102%;
-    background-size: 100%;
-    border-style: groove;
-    border-color: grey;
-    height: 108px;
+  .current-player .status {
+    display: flex;
+    justify-content: space-around;
   }
 
   ul {
@@ -164,17 +142,9 @@
     list-style-type: none;
   }
 
-  form.players ul li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 20px;
-    color: #d0dad2;
-    padding: 0px 10px;
-    line-height: 0px;
-  }
-
-  form.players ul li span {
-    margin-left: 10px
+  form {
+    max-height: 400px;
+    overflow: hidden;
   }
 
   .main-area {
@@ -187,9 +157,7 @@
     background-image: url(assets/field_notebook.png);
     background-repeat: no-repeat;
     background-size: 100% 90%;
-    width: 85%;
-    height: 90%;
-    margin-left: 100px;
+    height: 70%;
   }
 
   .field button {
@@ -239,74 +207,126 @@
     left: 18%;
     bottom: 40%;
   }
+
   .pitcher {
     position: absolute;
     left: 47%;
     bottom: 20%;
   }
+
   .first-base {
     position: absolute;
     left: 75%;
     bottom: 40%;
   }
+
   .batter-img {
     background-image: url('assets/batter_r.png');
     position: absolute;
-    left: 35%;
+    left: 33%;
     bottom: 8%;
     width: 60px;
     height: 60px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+
   .catcher {
     position: absolute;
     left: 47%;
     bottom: 10%;
   }
+
   .right-bar {
-    width: 27%;
+    width: 28%;
   }
 
-  .right-bar .scoring-board {
-    background-image: url('assets/background.jpg');
-    width: 98%;
-    height: 200px;
-    background-size: 100% 100%;
+  .event-area .event .player-info {
+    display: flex;
+    justify-content: space-between;
+    height: 35px;
+  }
+
+  .event-area .event .player-status {
+    background-image: url(assets/yellowline.png);
     background-repeat: no-repeat;
-    border-style: groove;
-    border-color: grey;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    background-size: 100% 3px;
   }
 
-  .right-bar .scoring-board table {
+  .event-area .event .player-status div {
+    display: flex;
+  }
+
+  .event-area .event .player-status div .label {
+    font-family: cursive;
+    font-style: italic;
+    color: #8e7229;
+    text-transform: uppercase;
+    font-weight: 700;
+    transform: scaleX(0.9);
+    margin: 5px;
+  }
+
+  .event-area .event .player-status div .value {
+    color: #5c5c52;
+    margin-top: 8px;
+  }
+
+  .event-area .event .event-content {
+    margin: 10px 0;
+  }
+
+  .main-area .scoring-board {
+    height: 85px;
+    background-image: url('assets/boxscore_light_portrait.png');
+    background-size: 102% 100%;
+    margin-bottom: 20px;
+  }
+
+  table {
     font-size: 20px;
     width: 100%;
+    border-collapse: collapse;
   }
 
-  .right-bar .scoring-board table tr td {
-    border: 0.5px solid #797777;
+  th,
+  td {
+    border-left: 1px solid #797777;
+    border-bottom: 1px solid #797777;
+  }
+
+  th:first-child,
+  th:last-child {
+    width: 30%;
+  }
+
+  tr th:first-child,
+  tr td:first-child {
+    border-left: none;
+  }
+
+  table tbody tr:last-child td {
+    border-bottom: none;
   }
 
   .btn-group {
-    margin: 10px 0;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
 
   .btn-group button {
-    background-image: url(assets/mainmenu_button.png);
+    background-image: url(assets/button_notebook.png);
     background-repeat: no-repeat;
-    height: 60px;
-    background-size: 100% 100%;
-    width: 24%;
+    height: 55px;
+    width: 110px;
     cursor: pointer;
+    background-size: 100% 100%;
     font-size: 20px;
-    padding: 10px;
-    color: #d0dad2;
-  }
-
-  .main-area .btn-group button {
-    width: 17%;
+    border-radius: 5px;
+    border-style: none;
   }
 
   .select-area {
@@ -314,21 +334,22 @@
   }
 
   .select-area .speed {
-    background-image: url('assets/speedscroller.png');
-    width: 55px;
+    background-image: url('assets/speedscrolleroverlayos4.png');
+    width: 45px;
     height: 330px;
     background-size: 100% 100%;
   }
 
   .select-area .speed ul li {
     font-size: 25px;
-    color: #d0dad2;
+    color: #5c5c52;
     padding: 0px 5px;
     margin-bottom: 15px;
+    text-align: center;
   }
 
   .select-area .specklebutton {
-    background-image: url(assets/specklebutton.png);
+    background-image: url('assets/specklebutton_notebook.png');
     width: 100%;
     height: 40px;
     background-size: 100% 100%;
@@ -336,18 +357,18 @@
   }
 
   .select-area .position {
-    background-image: url('assets/strikezoneos.png');
-    width: 55%;
+    background-image: url('assets/main_pitch_notebook.png');
+    width: 60%;
     background-size: 100% 100%;
-    margin: 0 15px;
+    margin: 0 10px;
   }
 
   .select-area .position .pitchers {
-    background-image: url(assets/pitcheros_r.png);
+    background-image: url('assets/pitcheros.png');
     width: 55%;
     height: 75%;
     background-size: 100% 100%;
-    margin: 55px 20px 10px 50px;
+    margin: 20% 25%;
   }
 
   .select-area .color-panel ul li {
@@ -360,11 +381,12 @@
     width: 20px;
     height: 20px;
     border-radius: 50%;
+    margin-bottom: 25px;
   }
 
   .color-panel .type p {
-    padding-left: 30px;
-    font-size: 20px;
+    padding-left: 25px;
+    font-size: 15px;
   }
 
   .fastball {
@@ -402,14 +424,12 @@
   .footer {
     display: flex;
     justify-content: space-between;
-    background-image: url('assets/footer.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
     height: 60px;
     position: fixed;
     left: 0px;
     bottom: 0px;
     width: 100%;
+    background-color: #9e9b96;
   }
 
   .footer button {
@@ -465,18 +485,18 @@
   <div class="header">
     <div class="visitor">
       <p>visitor</p>
-      <input class="visitor" type="text" value="LA Blackhawks 97" readonly>
-      <input class="visitor inset" type="text" value="3" readonly>
+      <label class="visitor">LA Blackhawks 97</label>
+      <label class="visitor inset">3</label>
     </div>
     <div class="home">
       <p>home</p>
-      <input class="home" type="text" value="So Cal Crunch" readonly>
-      <input class="home inset" type="text" value="13" readonly>
+      <label class="home">So Cal Crunch</label>
+      <label class="home inset">13</label>
     </div>
     <div class="inning">
       <p>inning</p>
-      <input class="dropdown" type="text" value="4th" readonly>
-      <input class="out" type="text" value="0 OUT" readonly>
+      <label class="dropdown">4th</label>
+      <label class="out">0 OUT</label>
     </div>
     <div class="light-bulbs">
       <div class="bulbs">
@@ -495,34 +515,100 @@
   </div>
   <div class="main">
     <div class="left-bar">
-      <input type="text" value="Los AI FS" readonly>
-      <form class="team-members">
+      <div class="visitor">
+        <label class="team-name">LA Blackhawks 97</label>
         <ol>
-          <li>1 Reann Rubio<span>2B</span></li>
-          <li>99 Laura Bietman <span>LF</span></li>
-          <li>26 Sally Woolpert<span>C</span></li>
-          <li>6 Penny Bacol<span>P</span></li>
-          <li>12 Sierra Oberacker<span>CF</span></li>
-          <li>33 Emily Mondonedo<span>SS</span></li>
-          <li>8 Nikki Law<span>RF</span></li>
-          <li>32 Cheryl Bond<span>1B</span></li>
-          <li>5 Sydney Olivas<span>3B</span></li>
+          <li class="players">1 Sara Limp<span>CF</span></li>
+          <li class="players">8 Kenna Limp <span>LF</span></li>
+          <li class="players">5 Maddy Hanely<span>RF</span></li>
+          <li class="players">11 Katie Vestre<span>C</span></li>
+          <li class="players">28 Sierra Oberacker<span>3B</span></li>
+          <li class="players">99 Chandler Casanave<span>P</span></li>
+          <li class="players">4 Sally Chaffee<span>-</span></li>
+          <li class="players">11 Penny Bacol<span>-</span></li>
+          <li class="players current">2 Laura Bietman<span>SS</span></li>
         </ol>
-      </form>
-      <form class="players">
-        <ul>
-          <li>
-            <p>6 Penny Basefont</p>
-            <p><span>24b</span><span>27s</span><span>51t</span></p>
-          </li>
-          <li>
-            <p>0 M Sise</p>
-            <p><span>47b</span><span>71s</span><span>118t</span></p>
-          </li>
-        </ul>
-      </form>
+        <div class="current-player">
+          <p>Pictcher 99 Chandler Casanave</p>
+          <div class="status">
+            <label>12b</label>
+            <label>17s</label>
+            <label>29t</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="home">
+        <label class="team-name">So Cal Crunch</label>
+        <ol>
+          <li class="players">5 Julia<span>2B</span></li>
+          <li class="players">21 Tori<span>3B</span></li>
+          <li class="players">36 Carly<span>-</span></li>
+          <li class="players">24 Lo<span>1B</span></li>
+          <li class="players">17 Taylor<span>-</span></li>
+          <li class="players current">2 Alexis<span>P</span></li>
+          <li class="players">99 Player<span>-</span></li>
+          <li class="players">58 Player<span>C</span></li>
+          <li class="players">12 Player<span>-</span></li>
+        </ol>
+        <div class="current-player">
+          <p>Picther 2 Alexis</p>
+          <div class="status">
+            <label>32b</label>
+            <label>48s</label>
+            <label>80t</label>
+          </div>
+        </div>
+      </div>
+
     </div>
     <div class="main-area">
+      <div class="scoring-board">
+        <table>
+          <tr>
+            <th></th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+            <th>4</th>
+            <th>5</th>
+            <th>6</th>
+            <th>7</th>
+            <th>R</th>
+            <th>H</th>
+            <th>E</th>
+            <th>L</th>
+          </tr>
+          <tr>
+            <td>LA Blackhawks 97</td>
+            <td>3</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>3</td>
+            <td>6</td>
+            <td>5</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>So Cal Crunch</td>
+            <td>4</td>
+            <td>4</td>
+            <td>5</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>13</td>
+            <td>8</td>
+            <td>1</td>
+            <td>3</td>
+          </tr>
+        </table>
+      </div>
       <div class="field">
         <div class="first-row">
           <button class="left-field" type="button">23</button>
@@ -552,69 +638,154 @@
       </div>
     </div>
     <div class="right-bar">
-      <div class="scoring-board">
-        <table>
-          <tr>
-            <td></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-            <td>7</td>
-            <td>R</td>
-            <td>H</td>
-            <td>E</td>
-            <td>L</td>
-          </tr>
-          <tr>
-            <td>Los AI</td>
-            <td>10</td>
-            <td>6</td>
-            <td>0</td>
-            <td>0</td>
-            <td>6</td>
-            <td>0</td>
-            <td></td>
-            <td>22</td>
-            <td>17</td>
-            <td>1</td>
-            <td>9</td>
-          </tr>
-          <tr>
-            <td>Arcadi</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td>0</td>
-            <td></td>
-            <td></td>
-            <td>0</td>
-            <td>0</td>
-            <td>8</td>
-            <td>3</td>
-          </tr>
-        </table>
-      </div>
-      <div class="btn-group">
-        <button type="button">Hold to set</button>
-        <button type="button">Hold to set</button>
-        <button type="button">Hold to set</button>
-        <button type="button">Hold to set</button>
-      </div>
+      <form class="event-area">
+        <div class="event">
+          <div class="player-info">
+            <p>B.(8) #11 Pnny Bacol</p>
+            <p>B.#2 Alexis</p>
+          </div>
+          <div class="player-status">
+            <div>
+              <p class="label">Ball</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="label">Strikes</p>
+              <p class="value">13</p>
+            </div>
+            <div>
+              <p class="label">Inn</p>
+              <p class="value">4</p>
+            </div>
+            <div>
+              <p class="label">Outs</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="value">0-0</p>
+            </div>
+            <div class="event-icon">
+              <img src="assets/event-icon.png" alt="event icon" width="50px" height="27px" ;>
+            </div>
+          </div>
+          <div class="event-content">
+            #11 Penny Bacol hits a line drive to the second baseman #5 Julia for an out.
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="player-info">
+            <p>B.(8) #11 Pnny Bacol</p>
+            <p>B.#2 Alexis</p>
+          </div>
+          <div class="player-status">
+            <div>
+              <p class="label">Ball</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="label">Strikes</p>
+              <p class="value">13</p>
+            </div>
+            <div>
+              <p class="label">Inn</p>
+              <p class="value">4</p>
+            </div>
+            <div>
+              <p class="label">Outs</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="value">0-0</p>
+            </div>
+            <div class="event-icon">
+              <img src="assets/event-icon.png" alt="event icon" width="50px" height="27px" ;>
+            </div>
+          </div>
+          <div class="event-content">
+            #11 Penny Bacol hits a line drive to the second baseman #5 Julia for an out.
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="player-info">
+            <p>B.(8) #11 Pnny Bacol</p>
+            <p>B.#2 Alexis</p>
+          </div>
+          <div class="player-status">
+            <div>
+              <p class="label">Ball</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="label">Strikes</p>
+              <p class="value">13</p>
+            </div>
+            <div>
+              <p class="label">Inn</p>
+              <p class="value">4</p>
+            </div>
+            <div>
+              <p class="label">Outs</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="value">0-0</p>
+            </div>
+            <div class="event-icon">
+              <img src="assets/event-icon.png" alt="event icon" width="50px" height="27px" ;>
+            </div>
+          </div>
+          <div class="event-content">
+            #11 Penny Bacol hits a line drive to the second baseman #5 Julia for an out.
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="player-info">
+            <p>B.(8) #11 Pnny Bacol</p>
+            <p>B.#2 Alexis</p>
+          </div>
+          <div class="player-status">
+            <div>
+              <p class="label">Ball</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="label">Strikes</p>
+              <p class="value">13</p>
+            </div>
+            <div>
+              <p class="label">Inn</p>
+              <p class="value">4</p>
+            </div>
+            <div>
+              <p class="label">Outs</p>
+              <p class="value">3</p>
+            </div>
+            <div>
+              <p class="value">0-0</p>
+            </div>
+            <div class="event-icon">
+              <img src="assets/event-icon.png" alt="event icon" width="50px" height="27px" ;>
+            </div>
+          </div>
+          <div class="event-content">
+            #11 Penny Bacol hits a line drive to the second baseman #5 Julia for an out.
+          </div>
+        </div>
+      </form>
       <div class="select-area">
         <div class="speed-panel">
           <div class="speed">
             <ul>
-              <li>103</li>
-              <li>104</li>
-              <li>105</li>
-              <li>106</li>
-              <li>107</li>
-              <li>108</li>
-              <li>109</li>
+              <li>40</li>
+              <li>41</li>
+              <li>42</li>
+              <li>43</li>
+              <li>44</li>
+              <li>45</li>
+              <li>46</li>
             </ul>
           </div>
           <button type="button" class="specklebutton">
