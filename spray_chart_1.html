@@ -238,16 +238,19 @@
     left: 18%;
     bottom: 40%;
   }
+
   .pitcher {
     position: absolute;
     left: 47%;
     bottom: 20%;
   }
+
   .first-base {
     position: absolute;
     left: 75%;
     bottom: 40%;
   }
+
   .batter-img {
     background-image: url('assets/batter_r.png');
     position: absolute;
@@ -258,11 +261,13 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
+
   .catcher {
     position: absolute;
     left: 47%;
     bottom: 10%;
   }
+
   .right-bar {
     width: 27%;
   }
@@ -277,13 +282,25 @@
     border-color: grey;
   }
 
-  .right-bar .scoring-board table {
+  table {
     font-size: 20px;
     width: 100%;
+    border-collapse: collapse;
   }
 
-  .right-bar .scoring-board table tr td {
-    border: 0.5px solid #797777;
+  th,
+  td {
+    border-left: 1px solid #797777;
+    border-bottom: 1px solid #797777;
+  }
+
+  tr th:first-child,
+  tr td:first-child {
+    border-left: none;
+  }
+
+  table tbody tr:last-child td {
+    border-bottom: none;
   }
 
   .btn-group {
