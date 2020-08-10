@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html>
+<style>
+  body {
+    background-image: url('assets/background.jpg');
+    font-family: Arial, Helvetica, sans-serif;
+    color: #d0dad2;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 0px;
+  }
+
+  ol {
+    font-size: 25px;
+    padding-left: 25px;
+    color: #d0dad2;
+  }
+
+  ol li {
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input[type="text"] {
+    width: 320px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-style: groove;
+    color: #d0dad2;
+    font-size: 22px;
+    font-weight: bold;
+    height: 50px;
+    margin-bottom: 20px;
+    padding: 0px 0px 0px 10px;
+  }
+
+  input[type="text"]:focus {
+    outline: none;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-around;
+    height: 80px;
+  }
+
+  .header input {
+    background-image: url('assets/visitor_name_dark.png');
+  }
+
+  .header input.inset {
+    width: 60px;
+    background-size: 70px 50px;
+    text-align: center;
+  }
+
+  .header p {
+    color: #a7934c;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    transform: scaleX(0.8);
+    display: inline-block;
+  }
+
+  .inning .dropdown,
+  .inning .out {
+    width: 70px;
+    background-size: 80px 50px;
+  }
+
+  .light-bulbs {
+    margin-top: 10px;
+  }
+
+  .light-bulbs .bulbs {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .light-bulbs .bulbs p {
+    font-size: 15px;
+    margin: 5px 3px;
+    font-weight: 700;
+  }
+
+  .light-bulbs .bulbs .ball {
+    margin: 4px 2px;
+    width: 15px;
+    height: 15px;
+    background-image: url(./assets/ball.png);
+    background-size: 15px 15px;
+  }
+
+  .light-bulbs .bulbs .ball.off {
+    background-image: url('./assets/ball_off.png');
+  }
+
+  .light-bulbs .bulbs .strike {
+    margin: 4px 2px;
+    width: 15px;
+    height: 15px;
+    background-size: 15px 15px;
+    background-image: url('./assets/strike.png');
+  }
+
+  .light-bulbs .bulbs .strike.off {
+    background-image: url('./assets/strike_off.png');
+  }
+
+  .main {
+    display: flex;
+  }
+
+  .left-bar {
+    width: 23%;
+  }
+
+  .left-bar input {
+    background-image: url('assets/inset.png');
+    text-align: center;
+    width: 100%;
+    background-size: 100%;
+    height: 45px;
+    font-size: 20px;
+  }
+
+  .left-bar form.team-members {
+    background-image: url('assets/background.jpg');
+    height: 70%;
+    width: 102%;
+    border-style: groove;
+    border-color: grey;
+  }
+
+  form.team-members ol li span {
+    float: right;
+    margin-right: 8px;
+  }
+
+  form.players {
+    background-image: url('assets/background.jpg');
+    width: 102%;
+    background-size: 100%;
+    border-style: groove;
+    border-color: grey;
+    height: 108px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 20px 0;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+
+  form.players ul li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    color: #d0dad2;
+    padding: 0px 10px;
+    line-height: 0px;
+  }
+
+  form.players ul li span {
+    margin-left: 10px
+  }
+
+  .main-area {
+    width: 47%;
+    margin: 20px 15px 0px 15px;
+  }
+
+  .field {
+    position: relative;
+    background-image: url(assets/field.png);
+    background-repeat: no-repeat;
+    background-size: 100% 90%;
+    width: 85%;
+    height: 90%;
+    margin-left: 100px;
+  }
+
+  .field button {
+    background-image: url('assets/lightbutton.png');
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-size: 111% 110%;
+    border-radius: 13px;
+    color: #9a8162;
+    font-size: 25px;
+    font-weight: 500;
+  }
+
+  .left-field {
+    position: absolute;
+    left: 25%;
+    bottom: 80%;
+  }
+
+  .center-field {
+    position: absolute;
+    left: 47%;
+    bottom: 82%;
+  }
+
+  .right-field {
+    position: absolute;
+    left: 70%;
+    bottom: 80%;
+  }
+
+  .shortstop {
+    position: absolute;
+    left: 35%;
+    bottom: 60%;
+  }
+
+  .second-base {
+    position: absolute;
+    left: 60%;
+    bottom: 60%;
+  }
+
+  .third-base {
+    position: absolute;
+    left: 18%;
+    bottom: 40%;
+  }
+  .pitcher {
+    position: absolute;
+    left: 47%;
+    bottom: 20%;
+  }
+  .first-base {
+    position: absolute;
+    left: 75%;
+    bottom: 40%;
+  }
+  .batter-img {
+    background-image: url('assets/batter_r.png');
+    position: absolute;
+    left: 35%;
+    bottom: 8%;
+    width: 60px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+  .catcher {
+    position: absolute;
+    left: 47%;
+    bottom: 10%;
+  }
+  .right-bar {
+    width: 27%;
+  }
+
+  .right-bar .scoring-board {
+    background-image: url('assets/background.jpg');
+    width: 98%;
+    height: 200px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    border-style: groove;
+    border-color: grey;
+  }
+
+  .right-bar .scoring-board table {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .right-bar .scoring-board table tr td {
+    border: 0.5px solid #797777;
+  }
+
+  .btn-group {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .btn-group button {
+    background-image: url(assets/mainmenu_button.png);
+    background-repeat: no-repeat;
+    height: 60px;
+    background-size: 100% 100%;
+    width: 24%;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    color: #d0dad2;
+  }
+
+  .main-area .btn-group button {
+    width: 17%;
+  }
+
+  .select-area {
+    display: flex;
+  }
+
+  .select-area .speed {
+    background-image: url('assets/speedscroller.png');
+    width: 55px;
+    height: 330px;
+    background-size: 100% 100%;
+  }
+
+  .select-area .speed ul li {
+    font-size: 25px;
+    color: #d0dad2;
+    padding: 0px 5px;
+    margin-bottom: 15px;
+  }
+
+  .select-area .specklebutton {
+    background-image: url(assets/specklebutton.png);
+    width: 100%;
+    height: 40px;
+    background-size: 100% 100%;
+    margin-top: 17px;
+  }
+
+  .select-area .position {
+    background-image: url('assets/strikezoneos.png');
+    width: 55%;
+    background-size: 100% 100%;
+    margin: 0 15px;
+  }
+
+  .select-area .position .pitchers {
+    background-image: url(assets/pitcheros_r.png);
+    width: 55%;
+    height: 75%;
+    background-size: 100% 100%;
+    margin: 55px 20px 10px 50px;
+  }
+
+  .select-area .color-panel ul li {
+    font-size: 22px;
+    padding: 0px 5px;
+    margin-bottom: 15px;
+  }
+
+  .color-panel .type {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .color-panel .type p {
+    padding-left: 30px;
+    font-size: 20px;
+  }
+
+  .fastball {
+    background-color: #b1b1b1;
+  }
+
+  .curve {
+    background-color: #b54848;
+  }
+
+  .change {
+    background-color: #4748b3;
+  }
+
+  .slider {
+    background-color: #46adae;
+  }
+
+  .cutter {
+    background-color: #b2b14b;
+  }
+
+  .splitter {
+    background-color: #b34bb3;
+  }
+
+  .knuckle {
+    background-color: #b17475;
+  }
+
+  .other {
+    background-color: #442c13;
+  }
+
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    background-image: url('assets/footer.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 60px;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  .footer button {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 8px;
+    width: 88px;
+    height: 45px;
+    border-radius: 10px;
+  }
+
+  .exit-btn {
+    background-image: url('assets/exit_button.png');
+  }
+
+  .undo {
+    background-image: url('assets/undo_button.png');
+  }
+
+  .redo {
+    background-image: url('assets/redo_button.png');
+  }
+
+  .misc-btn {
+    background-image: url('assets/misc_button.png');
+  }
+
+  .notes {
+    background-image: url('assets/notes_button.png');
+  }
+
+  .info {
+    background-image: url('assets/info_button.png');
+  }
+
+  .tweet {
+    background-image: url('assets/tweet_button.png');
+  }
+
+  .stats {
+    background-image: url('assets/stats_button.png');
+  }
+
+  .scorecard {
+    background-image: url('assets/scorecard_button.png');
+  }
+
+  .setting-btn {
+    background-image: url('assets/settings_button.png');
+  }
+</style>
+<div class="spray-chart-1">
+  <div class="header">
+    <div class="visitor">
+      <p>visitor</p>
+      <input class="visitor" type="text" value="Los AI FS" readonly>
+      <input class="visitor inset" type="text" value="22" readonly>
+    </div>
+    <div class="home">
+      <p>home</p>
+      <input class="home" type="text" value="Arcadia" readonly>
+      <input class="home inset" type="text" value="0" readonly>
+    </div>
+    <div class="inning">
+      <p>inning</p>
+      <input class="dropdown" type="text" value="6th" readonly>
+      <input class="out" type="text" value="0 OUT" readonly>
+    </div>
+    <div class="light-bulbs">
+      <div class="bulbs">
+        <p>balls</p>
+        <div id="ball-1" class="ball"></div>
+        <div id="ball-2" class="ball off"></div>
+        <div id="ball-3" class="ball off"></div>
+      </div>
+      <div class="bulbs">
+        <p>strikes</p>
+        <div></div>
+        <div id="red-1" class="strike"></div>
+        <div id="red-2" class="strike off"></div>
+      </div>
+    </div>
+  </div>
+  <div class="main">
+    <div class="left-bar">
+      <input type="text" value="Los AI FS" readonly>
+      <form class="team-members">
+        <ol>
+          <li>1 Reann Rubio<span>2B</span></li>
+          <li>99 Laura Bietman <span>LF</span></li>
+          <li>26 Sally Woolpert<span>C</span></li>
+          <li>6 Penny Bacol<span>P</span></li>
+          <li>12 Sierra Oberacker<span>CF</span></li>
+          <li>33 Emily Mondonedo<span>SS</span></li>
+          <li>8 Nikki Law<span>RF</span></li>
+          <li>32 Cheryl Bond<span>1B</span></li>
+          <li>5 Sydney Olivas<span>3B</span></li>
+        </ol>
+      </form>
+      <form class="players">
+        <ul>
+          <li>
+            <p>6 Penny Basefont</p>
+            <p><span>24b</span><span>27s</span><span>51t</span></p>
+          </li>
+          <li>
+            <p>0 M Sise</p>
+            <p><span>47b</span><span>71s</span><span>118t</span></p>
+          </li>
+        </ul>
+      </form>
+    </div>
+    <div class="main-area">
+      <div class="field">
+        <div class="first-row">
+          <button class="left-field" type="button">23</button>
+          <button class="center-field" type="button">?</button>
+          <button class="right-field" type="button">11</button>
+        </div>
+        <div class="second-row">
+          <button class="shortstop" type="button">21</button>
+          <button class="second-base" type="button">12</button>
+        </div>
+        <div class="third-row">
+          <button class="third-base" type="button">25</button>
+          <button class="pitcher" type="button">15</button>
+          <button class="first-base" type="button">1</button>
+        </div>
+        <div class="fourth-row">
+          <div class="batter-img"></div>
+          <button class="catcher" type="button">50</button>
+        </div>
+      </div>
+      <div class="btn-group">
+        <button type="button">Ball</button>
+        <button type="button">Strike</button>
+        <button type="button">Foul</button>
+        <button type="button">Out</button>
+        <button type="button">In Play</button>
+      </div>
+    </div>
+    <div class="right-bar">
+      <div class="scoring-board">
+        <table>
+          <tr>
+            <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>R</td>
+            <td>H</td>
+            <td>E</td>
+            <td>L</td>
+          </tr>
+          <tr>
+            <td>Los AI</td>
+            <td>10</td>
+            <td>6</td>
+            <td>0</td>
+            <td>0</td>
+            <td>6</td>
+            <td>0</td>
+            <td></td>
+            <td>22</td>
+            <td>17</td>
+            <td>1</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <td>Arcadi</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td>0</td>
+            <td></td>
+            <td></td>
+            <td>0</td>
+            <td>0</td>
+            <td>8</td>
+            <td>3</td>
+          </tr>
+        </table>
+      </div>
+      <div class="btn-group">
+        <button type="button">Hold to set</button>
+        <button type="button">Hold to set</button>
+        <button type="button">Hold to set</button>
+        <button type="button">Hold to set</button>
+      </div>
+      <div class="select-area">
+        <div class="speed-panel">
+          <div class="speed">
+            <ul>
+              <li>103</li>
+              <li>104</li>
+              <li>105</li>
+              <li>106</li>
+              <li>107</li>
+              <li>108</li>
+              <li>109</li>
+            </ul>
+          </div>
+          <button type="button" class="specklebutton">
+          </button>
+        </div>
+        <div class="position">
+          <div class="pitchers"></div>
+        </div>
+        <div class="color-panel">
+          <div class="type fastball">
+            <p>Fastball</p>
+          </div>
+          <div class="type curve">
+            <p>Curve</p>
+          </div>
+          <div class="type change">
+            <p>Change</p>
+          </div>
+          <div class="type slider">
+            <p>Slider</p>
+          </div>
+          <div class="type cutter">
+            <p>Cutter</p>
+          </div>
+          <div class="type splitter">
+            <p>Splitter</p>
+          </div>
+          <div class="type knuckle">
+            <p>Knuckle</p>
+          </div>
+          <div class="type other">
+            <p>Other</p>
+          </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="exit">
+      <button class="exit-btn" type="button"></button>
+    </div>
+    <div class="action">
+      <button class="undo" type="button"></button>
+      <button class="redo" type="button"></button>
+    </div>
+    <div class="misc">
+      <button class="misc-btn" type="button"></button>
+    </div>
+    <div class="setting">
+      <button class="notes" type="button"></button>
+      <button class="info" type="button"></button>
+      <button class="tweet" type="button"></button>
+      <button class="stats" type="button"></button>
+      <button class="scorecard" type="button"></button>
+      <button class="setting-btn" type="button"></button>
+    </div>
+
+  </div>
+</div>
+
+
+</html>
